@@ -1,0 +1,77 @@
+Here's the timetest.cpp
+#include "CPUTimer.h"
+#include "LinkedList.h"
+#include "StackAr.h"
+#include "CursorList.h"
+#include "QueueAr.h"
+#include "StackLi.h"
+#include "vector.h"
+#include "SkipList.h"
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+vector<CursorNode <int> > cursorSpace(250000);
+
+int getChoice()
+{
+        int choice;
+        cout<<"      ADT Menu"<<endl;
+        cout<<"0. Quit\n1. LinkedList\n2. CursorList\n3. StackList\n4. StackLi\n5. QueueAr\n6. SkipList"<<endl;
+        cout<< "Your choice >>";
+        cin >> choice;
+        return choice;
+}
+
+int main()
+{
+        cout<<"Filename >>";
+        char filename[9];
+        cin >> filename;
+
+        ifstream file;
+        file.open(filename);
+        file.close();
+
+        int choice;
+        do
+        {
+                choice = getChoice();
+                cout << "Your input is " << choice << endl;
+
+                ct.reset();
+                switch (choice)
+                {
+                        case 1: RunList(filename); break;
+                        case 2: RunCursorList(filename); break;
+                        case 3: RunStackAr(filename); break;
+                        case 4: RunStackLi(filename); break;
+                        case 5: RunQueueAr(filename); break;
+                        case 6: RunSkipList(filename); brea
+                }
+
+                cout << "CPU time: " << ct.cur_CPUTime() << endl;
+
+        } while(choice > 0);
+
+        return 0;
+}
+
+Makefile
+
+CC=g++
+CFLAGS=-Wall -ansi -O2
+
+TARGET=timetest
+HEADERS=CPUTimer.h LinkedList.h StackAr.h CursorList.h  QueueAr.h StackLi.h vector.h SkipList.h dsexceptions.h
+SOURCES=timetest.cpp LinkedList.cpp StackAr.cpp CursorList.cpp QueueAr.cpp StackLi.cpp SkipList.cpp vector.cpp 
+
+
+
+
+all:    $(SOURCES) $(HEADERS)
+        $(CC) $(CFLAGS) -o $(TARGET) $(SOURCES)
+
+clean:
+        rm -f $(TARGET)
